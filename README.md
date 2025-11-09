@@ -19,7 +19,7 @@ A Java Swing-based cinema booking application that allows users to browse movies
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/KyriakosLamp/CinemAPP
 cd CinemAPP
 ```
 
