@@ -17,6 +17,17 @@ A Java Swing-based cinema booking application that allows users to browse movies
 - SQLite JDBC driver (included in `other/` directory)
 - MySQL Connector (optional, included in `other/` directory)
 
+## Usage
+
+1. **Movie Selection**: Browse and select from available movies
+   - Use "Reset Seats" button to clear all bookings for testing
+2. **Seat Selection**: Choose seats from the 3x5 theater layout
+   - Green: Available
+   - Red: Booked
+   - Gray: Selected
+3. **Checkout**: Confirm booking and complete transaction
+4. **Window**: Application window is resizable for better viewing
+
 ## Setup & Installation
 
 1. Clone the repository:
@@ -49,6 +60,23 @@ The application uses SQLite by default. To switch to MySQL:
 2. Change `String dbType = "sqlite";` to `String dbType = "mysql";`
 3. Update MySQL connection details in the `connectMySQL()` method
 
+## Database Static Layout
+
+The application uses two main tables:
+
+**movies table:**
+- `movie_id` (INTEGER) - Unique movie identifier
+- `movie_title` (TEXT) - Movie title
+- `description` (TEXT) - Movie description
+- `movie_logo` (BLOB) - Movie poster image
+
+**seats table:**
+- `movie_id` (INTEGER) - References movies table
+- `seat_id` (TEXT) - Seat identifier (A1, A2, B1, etc.)
+- `is_booked` (BOOLEAN) - Booking status (0=available, 1=booked)
+
+The theater layout consists of 15 seats arranged in a 3x5 grid (rows A-C, columns 1-5).
+
 ## Project Structure
 
 ```
@@ -69,17 +97,10 @@ CinemAPP/
 │   └── sqlite-jdbc-3.47.1.0.jar  # JDBC driver
 └── README.md
 ```
-
-## Usage
-
-1. **Movie Selection**: Browse and select from available movies
-   - Use "Reset Seats" button to clear all bookings for testing
-2. **Seat Selection**: Choose seats from the 3x5 theater layout
-   - Green: Available
-   - Red: Booked
-   - Gray: Selected
-3. **Checkout**: Confirm booking and complete transaction
-4. **Window**: Application window is resizable for better viewing
+## Project Info 
+- I used XAMPP and MySQL for early development and testing
+- Once i wanted to share the project i switched to SQLite for sharing purposes
+- TODO : Account-sale screen after the seat selection  and unique User ID impemetation to save tickets to spesific user
 
 ## License
 
