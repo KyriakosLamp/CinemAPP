@@ -42,7 +42,7 @@ public class MainApp {
                 JFrame frame = new JFrame("CinemApp");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setSize(700, 520); // Set initial size
-                frame.setResizable(false);
+                frame.setResizable(true);
 
                 // Add LobbyPanel to the frame
                 frame.getContentPane().add(new MovieSelectionPanel(connection, frame));

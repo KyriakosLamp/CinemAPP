@@ -8,6 +8,8 @@ A Java Swing-based cinema booking application that allows users to browse movies
 - Interactive seat selection with real-time availability
 - Complete booking workflow with database persistence
 - Support for SQLite and MySQL databases
+- Resizable application window
+- Reset all seats functionality for testing purposes
 
 ## Prerequisites
 
@@ -71,11 +73,13 @@ CinemAPP/
 ## Usage
 
 1. **Movie Selection**: Browse and select from available movies
+   - Use "Reset Seats" button to clear all bookings for testing
 2. **Seat Selection**: Choose seats from the 3x5 theater layout
    - Green: Available
    - Red: Booked
    - Gray: Selected
 3. **Checkout**: Confirm booking and complete transaction
+4. **Window**: Application window is resizable for better viewing
 
 ## License
 

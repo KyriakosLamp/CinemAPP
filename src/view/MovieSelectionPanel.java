@@ -20,10 +20,26 @@ public class MovieSelectionPanel extends JPanel {
         // Set layout
         setLayout(new BorderLayout());
 
+        // Top panel with title and reset button
+        JPanel topPanel = new JPanel(new BorderLayout());
+        
         // Title
         JLabel title = new JLabel("Select a Movie", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 20));
-        add(title, BorderLayout.NORTH);
+        topPanel.add(title, BorderLayout.CENTER);
+        
+        // Reset button
+        JButton resetButton = new JButton("Reset Seats");
+        resetButton.setFont(new Font("Arial", Font.PLAIN, 12));
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                resetAllSeats();
+            }
+        });
+        topPanel.add(resetButton, BorderLayout.EAST);
+        
+        add(topPanel, BorderLayout.NORTH);
 
         // Create a container for the movies
         JPanel movieContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20)); // Horizontal layout
@@ -115,5 +131,20 @@ public class MovieSelectionPanel extends JPanel {
         parentFrame.getContentPane().add(new SeatSelectionPanel(connection, parentFrame, movieId, movieTitle));
         parentFrame.revalidate();
         parentFrame.repaint();
+    }
+    
+    private void resetAllSeats() {
+        try {
+            String query = "UPDATE seats SET is_booked = 0";
+            PreparedStatement statement = connection.prepareStatement(query);
+            int rowsUpdated = statement.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "All seats have been reset! (" + rowsUpdated + " seats updated)", 
+                                        "Reset Complete", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error resetting seats: " + e.getMessage(), 
+                                        "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
